@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BlogEFFluentMapping.Data.Mappings
 {
-    public class UserMap : IEntityTypeConfiguration<UserResult>
+    public class UserMap : IEntityTypeConfiguration<User>
     {
-        public void Configure(EntityTypeBuilder<UserResult> builder)
+        public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("User");
             builder.HasKey(x => x.Id);
@@ -38,12 +38,12 @@ namespace BlogEFFluentMapping.Data.Mappings
             builder.HasMany(x => x.Roles)
                    .WithMany(x => x.Users)
                    .UsingEntity<Dictionary<string, object>>("UserRole",
-                                role => role.HasOne<RoleResult>()
+                                role => role.HasOne<Role>()
                                             .WithMany()
                                             .HasForeignKey("RoleId")
                                             .HasConstraintName("FK_UserTag_RoleId")
                                             .OnDelete(DeleteBehavior.Cascade),
-                                user => user.HasOne<UserResult>()
+                                user => user.HasOne<User>()
                                             .WithMany()
                                             .HasForeignKey("UserId")
                                             .HasConstraintName("FK_UserRole_UserId")

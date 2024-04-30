@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BlogEFFluentMapping.Data.Mappings
 {
-    public class TagMap : IEntityTypeConfiguration<TagResult>
+    public class TagMap : IEntityTypeConfiguration<Tag>
     {
-        public void Configure(EntityTypeBuilder<TagResult> builder)
+        public void Configure(EntityTypeBuilder<Tag> builder)
         {
             //Table
             builder.ToTable("Tag");

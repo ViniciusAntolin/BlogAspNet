@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BlogEFFluentMapping.Data.Mappings
 {
-    public class CategoryMap : IEntityTypeConfiguration<CategoryResult>
+    public class CategoryMap : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<CategoryResult> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             //Table
             builder.ToTable("Category");

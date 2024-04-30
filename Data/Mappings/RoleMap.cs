@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BlogEFFluentMapping.Data.Mappings
 {
-    public class RoleMap : IEntityTypeConfiguration<RoleResult>
+    public class RoleMap : IEntityTypeConfiguration<Role>
     {
-        public void Configure(EntityTypeBuilder<RoleResult> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
             //Table
             builder.ToTable("Role");

@@ -1,8 +1,8 @@
 ﻿namespace Blog.Models
 {
-    public class UserResult
+    public class User
     {
-        public UserResult() => Roles = new List<RoleResult>();
+        public User() => Roles = new List<Role>();
 
         public int Id { get; set; }
         public string Name { get; set; }
@@ -12,7 +12,7 @@
         public string Image { get; set; }
         public string Slug { get; set; }
         public string GitHub { get; set; }
-        public List<RoleResult> Roles { get; set; }
-        public List<PostResult> Posts { get; set; }
+        public List<Role> Roles { get; set; }
+        public List<Post> Posts { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BlogEFFluentMapping.Data.Mappings
 {
-    public class PostMap : IEntityTypeConfiguration<PostResult>
+    public class PostMap : IEntityTypeConfiguration<Post>
     {
-        public void Configure(EntityTypeBuilder<PostResult> builder)
+        public void Configure(EntityTypeBuilder<Post> builder)
         {
             // Tabela
             builder.ToTable("Post");
@@ -48,12 +48,12 @@ namespace BlogEFFluentMapping.Data.Mappings
             builder.HasMany(x => x.Tags)
                    .WithMany(x => x.Posts)
                    .UsingEntity<Dictionary<string, Object>>("PostTag",
-                                post => post.HasOne<TagResult>()
+                                post => post.HasOne<Tag>()
                                             .WithMany()
                                             .HasForeignKey("PostId")
                                             .HasConstraintName("FK_PostTag_PostId")
                                             .OnDelete(DeleteBehavior.Cascade),
-                                tag => tag.HasOne<PostResult>()
+                                tag => tag.HasOne<Post>()
                                           .WithMany()
                                           .HasForeignKey("TagId")
                                           .HasConstraintName("FK_PostTag_TagId")
