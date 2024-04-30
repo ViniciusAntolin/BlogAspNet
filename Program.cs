@@ -3,9 +3,9 @@ using Data.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
-builder.Services.AddTransient<IDbContext, BlogDataContext>();
+builder.Services.AddDbContext<IDbContext, BlogDataContext>();
 
 var app = builder.Build();
-app.MapGet("/", () => "Hello World!");
+app.MapControllers();
 
 app.Run();
