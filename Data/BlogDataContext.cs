@@ -8,10 +8,10 @@ namespace Blog.Data
 {
     public class BlogDataContext : DbContext, IDbContext
     {
-        public DbSet<CategoryResult> Categories { get; set; }
-        public DbSet<PostResult> Posts { get; set; }
-        public DbSet<UserResult> Users { get; set; }
-        public DbSet<PostWithTagsCountResult> PostsWithTags { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<PostWithTagsCount> PostsWithTags { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
          => optionsBuilder.UseSqlServer(@"Server=localhost, 1433; Database=Blog; User ID=sa; Password=Sync1004inova; trustServerCertificate=true");
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace Blog.Data
             modelBuilder.ApplyConfiguration(new RoleMap());
             modelBuilder.ApplyConfiguration(new TagMap());
             modelBuilder.ApplyConfiguration(new UserMap());
-            modelBuilder.Entity<PostWithTagsCountResult>(x => x.ToSqlQuery("select [Title] as Name, count(t.id) as Count from Post p inner join posttag pt on pt.postid = p.id inner join tag t on t.id = pt.tagid group by p.title").HasNoKey());
+            modelBuilder.Entity<PostWithTagsCount>(x => x.ToSqlQuery("select [Title] as Name, count(t.id) as Count from Post p inner join posttag pt on pt.postid = p.id inner join tag t on t.id = pt.tagid group by p.title").HasNoKey());
             base.OnModelCreating(modelBuilder);
         }
     }

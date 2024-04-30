@@ -6,10 +6,10 @@ namespace Data.Interface
 {
     public interface IDbContext
     {
-        public DbSet<CategoryResult> Categories { get; set; }
-        public DbSet<PostResult> Posts { get; set; }
-        public DbSet<UserResult> Users { get; set; }
-        public DbSet<PostWithTagsCountResult> PostsWithTags { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<PostWithTagsCount> PostsWithTags { get; set; }
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
